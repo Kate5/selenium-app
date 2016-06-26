@@ -1,5 +1,7 @@
 package com.selenium.test.webtestsbase;
 
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
@@ -20,10 +22,10 @@ public class CapabilitiesGenerator {
             case FIREFOX:
                 return DesiredCapabilities.firefox();
             case CHROME:
-                System.setProperty("webdriver.chrome.driver", "/Users/kate/IdeaProjects/testProject/drivers/chromedriver");
-//                if (System.getProperty("webdriver.chrome.driver") == null) {
-//                    throw new IllegalStateException("System variable 'webdriver.chrome.driver' should be set to path for executable driver");
-//                }
+                //System.setProperty("webdriver.chrome.driver", "way/to/chromedriver");
+                if (System.getProperty("webdriver.chrome.driver") == null) {
+                    throw new IllegalStateException("System variable 'webdriver.chrome.driver' should be set to path for executable driver");
+                }
                 return DesiredCapabilities.chrome();
             case IE10:
                 DesiredCapabilities caps = DesiredCapabilities.internetExplorer();

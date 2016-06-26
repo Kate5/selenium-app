@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -53,10 +54,6 @@ public class WebDriverFactory {
             } else {
                 switch (browser) {
                     case FIREFOX:
-
-                        //FirefoxProfile prof = new FirefoxProfile();
-                        //prof.setPreference("browser.startup.homepage_override.mstone", "ignore");
-                        //Driver = new FirefoxDriver(prof);
                         driver = new FirefoxDriver(CapabilitiesGenerator.getDefaultCapabilities(Browser.FIREFOX));
                         break;
                     case CHROME:
@@ -95,7 +92,7 @@ public class WebDriverFactory {
     public static void takeScreenShot() {
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(scrFile, new File("/Users/kate/IdeaProjects/testProject/screenshots/file.png"));
+            FileUtils.copyFile(scrFile, new File("../testProject/screenshots/file.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
